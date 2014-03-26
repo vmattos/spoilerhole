@@ -1,0 +1,13 @@
+{
+  "name": "spoilerhole",
+  "version": "0.0.1",
+  "dependencies": {
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
