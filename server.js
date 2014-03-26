@@ -10,6 +10,7 @@ var configDB = require('./config/database.js');
 
 var app = express();
 
+var mongoose = require('mongoose');
 mongoose.connect(configDB.url);
 
 app.configure(function() {
