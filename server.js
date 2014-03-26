@@ -11,7 +11,6 @@ var configDB = require('./config/database.js');
 var app = express();
 
 var mongoose = require('mongoose');
-mongoose.connect(configDB.url);
 
 app.configure(function() {
 	// all environments
@@ -25,9 +24,15 @@ app.configure(function() {
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
 
+
 	// development only
 	if ('development' == app.get('env')) {
-	  app.use(express.errorHandler());
+		app.use(express.errorHandler());
+		mongoose.connect(configDB.url);
+	}
+
+	if('test' == app.get('env')) {
+		mongoose.connect(configDB.test)
 	}
 });
 
