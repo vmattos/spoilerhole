@@ -6,8 +6,11 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var configDB = require('./config/database.js');
 
 var app = express();
+
+mongoose.connect(configDB.url);
 
 app.configure(function() {
 	// all environments
