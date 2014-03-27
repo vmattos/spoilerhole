@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "node test/test-runner.js; grunt -v test"
+    "test": "node test/test-runner.js; ./node_modules/grunt-cli/bin/grunt -v test"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "time-grunt": "~0.3.1",
     "grunt-contrib-watch": "~0.6.1",
     "request": "~2.34.0",
-    "grunt-jscs-checker": "~0.4.1"
+    "grunt-jscs-checker": "~0.4.1",
+    "grunt-cli": "~0.1.13"
   }
 }
