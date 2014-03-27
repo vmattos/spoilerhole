@@ -1,4 +1,6 @@
-var medias = {}
+'use strict';
+
+var medias = {};
 
 module.exports = exports = medias;
 

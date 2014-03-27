@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Module dependencies.
@@ -26,18 +27,18 @@ app.configure(function() {
 
 
 	// development only
-	if ('development' == app.get('env')) {
+	if ('development' === app.get('env')) {
 		app.use(express.errorHandler());
 		mongoose.connect(configDB.url);
 	}
 
-	if('test' == app.get('env')) {
-		mongoose.connect(configDB.test)
+	if('test' === app.get('env')) {
+		mongoose.connect(configDB.test);
 	}
 });
 
 require('./config/routes')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+	console.log('Express server listening on port ' + app.get('port'));
 });
