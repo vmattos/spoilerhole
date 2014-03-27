@@ -1,0 +1,15 @@
+{
+	"curly": true,
+	"globalstrict": true,
+	"quotmark": "single",
+	"smarttabs": true,
+	"eqnull": true,
+	"browser": true,
+	"indent": 4,
+	"undef": true,
+	"unused": true,
+	"evil": true,
+	"devel": true,
+	"jquery": true,
+	"node": true
+}
