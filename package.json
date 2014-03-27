@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "test.js"
+    "test": "node test/test-runner.js"
 
   },
   "repository": {
