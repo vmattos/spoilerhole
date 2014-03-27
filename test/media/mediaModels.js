@@ -26,5 +26,14 @@ module.exports = {
 			test.equal(media.title, 'Lord of The Rings', '"Title" should be Lord of The Rings');
 			test.done();
 		});
+	},
+
+	"Should NOT insert media without a title": function(test) {
+	
+		var media = new Media();
+
+		test.throws(media.save(function(error, media) {
+			test.done();
+		}));
 	}
 };
