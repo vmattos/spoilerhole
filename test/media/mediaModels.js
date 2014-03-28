@@ -27,6 +27,22 @@ module.exports = {
 		test.throws(media.save(function(error, media) {
 			test.done();
 		}));
+	},
+
+	"Should insert media with one spoiler": function(test) {
+
+		var media = new Media({
+			title: 'Red Dragon'
+		});
+
+		media.spoilers.push("Graham kills Mr. D");
+
+		media.save(function(error, media) {
+			if(error) console.log(error);
+
+			test.equal(media.spoilers[0], "Graham kills Mr. D");
+			test.done()
+		});
 	}
 };
 
