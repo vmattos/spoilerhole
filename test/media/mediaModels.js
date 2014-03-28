@@ -41,7 +41,27 @@ module.exports = {
 			if(error) console.log(error);
 
 			test.equal(media.spoilers[0], "Graham kills Mr. D");
+			
 			test.done()
+		});
+	},
+
+	"Śhould insert media with multiple spoilers": function(test) {
+
+		var media = new Media({
+			title: 'The Dark Tower'
+		});
+
+		media.spoilers.push("Henry Dean dies");
+		media.spoilers.push("Jake Chambers sacrifices himself to save Stephen King");
+
+		media.save(function(error, media) {
+			if(error) console.log(error);
+
+			test.equal(media.spoilers[0], "Henry Dean dies");
+			test.equal(media.spoilers[1], "Jake Chambers sacrifices himself to save Stephen King");
+
+			test.done();
 		});
 	}
 };
