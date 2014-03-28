@@ -29,3 +29,18 @@ medias.create = function(req, res, next) {
 		res.send(media);
 	});
 };
+
+medias.get = function(req, res, next) {
+	var id = req.params.id;
+
+	Media.findOne({ _id: id }, function(error, media) {
+		if(error) next(error);
+
+		console.log(media)
+
+		res.render('medias/mediaView', {
+			media: media,
+			title: media.title + "'s Spoilers"
+		});
+	});
+};

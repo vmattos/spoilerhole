@@ -7,4 +7,5 @@ module.exports = function(app) {
 	app.get('/', medias.index);
 	app.get('/media', medias.new); 
 	app.post('/media', medias.create);
+	app.get('/media/:id', medias.get)
 };
