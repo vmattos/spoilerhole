@@ -41,7 +41,7 @@ module.exports = {
 			if(error) console.log(error);
 
 			test.equal(media.spoilers[0], "Graham kills Mr. D");
-			
+
 			test.done()
 		});
 	},
@@ -63,7 +63,11 @@ module.exports = {
 
 			test.done();
 		});
+	}, 
+
+	"Cleaning up database...": function(test) {
+		Media.remove({}, function(){});	
+		db.disconnect();
+		test.done();
 	}
 };
-
-Media.remove({}, function(){});
