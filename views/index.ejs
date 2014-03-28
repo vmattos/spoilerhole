@@ -6,8 +6,12 @@
   <body>
   	<% if(medias) { %>
 		<ul>
-			<% for(var i=0; i<=medias.length; i++) { %>
-				<li><%= medias[i].title %></li>
+			<% for(var i=0; i < medias.length; i++) { %>
+				<li>
+          <a href="/media/<%= medias[i]._id %>">
+            <%= medias[i].title %>
+          </a>
+        </li>
 			<% } %>
 		</ul>
   	<% } %>
