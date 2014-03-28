@@ -4,17 +4,9 @@ var Media = require('../../app/models/media');
 
 var db;
 
-module.exports = {
-    setUp: function(callback) {
-        db = mongoose.connect('mongodb://localhost/test');
-        callback();
-    },
+db = mongoose.connect('mongodb://localhost/test');
 
-    tearDown: function(callback) {
-		Media.remove({}, function(){});
-        db.disconnect();
-        callback();        
-    },
+module.exports = {
 
     "Should insert media with a title": function(test) {
 	
@@ -37,3 +29,5 @@ module.exports = {
 		}));
 	}
 };
+
+Media.remove({}, function(){});
