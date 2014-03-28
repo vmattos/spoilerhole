@@ -12,4 +12,5 @@ module.exports = function(app) {
 
 	// spoilers routes
 	app.get('/media/:id/spoiler', spoilers.new);
+	app.post('/media/:id/spoiler', spoilers.create);
 };
