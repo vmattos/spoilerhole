@@ -9,7 +9,7 @@ module.exports = exports = spoilers;
 spoilers.new = function(req, res, next){
 	var mediaId = req.params.id;
 
-	Media.findOne({ _id: id }, function(error, media) {
+	Media.findOne({ _id: mediaId }, function(error, media) {
 		res.render('spoilers/new', {
 			media: media
 		});
