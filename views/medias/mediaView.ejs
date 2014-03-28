@@ -5,8 +5,15 @@
   </head>
   <body>
   	<h1>Spoilers for <%= media.title %>:</h1>
-    <ul>
-      TODO: Put spoilers list for media here
-    </ul>
+
+    <% if(media.spoilers.length > 0) { %>
+      <ul>
+        <% for(var i=0; i < media.spoilers.length; i++) { %>
+          <li><%= media.spoilers[i] %></li>
+        <% } %>
+      </ul>
+    <% } else { %>
+      <p><%= media.title %> has no spoilers :(</p>
+    <% } %>
   </body>
 </html>
