@@ -36,11 +36,9 @@ medias.get = function(req, res, next) {
 	Media.findOne({ _id: id }, function(error, media) {
 		if(error) next(error);
 
-		console.log(media)
-
 		res.render('medias/mediaView', {
 			media: media,
-			title: media.title + "'s Spoilers"
+			title: media.title + '\'s Spoilers'
 		});
 	});
 };
