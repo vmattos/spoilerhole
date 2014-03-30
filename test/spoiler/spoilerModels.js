@@ -70,6 +70,41 @@ module.exports = {
 		});
 	},
 
+	"Should query multipĺe spoilers for multiple medias": function(test) {
+		var media1 = { title: 'Harry Potter' };
+		var media2 = { title: 'The Last of Us' };
+
+		var spoilerHp1,
+			spoilerHp2,
+			spoilerTlos1,
+			spoilerTlos2;
+
+		var contador = 0; 
+
+		Media.create(media1, media2, function(error, media1, media2) {
+			if(error) console.log("Errors for medias: " + error);
+
+			console.log(media1)
+			console.log("media: " + contador++)
+		}).then(function(){
+			spoilerHp1 = { text: 'Dumbledore dies', media: media1 };
+			spoilerHp2 = { text: 'Sanpe dies', media: media1 };
+
+			spoilerTlos1 = { text: 'Ellie survives', media: media2 };
+			spoilerTlos2 = { text: 'No cure was found', media: media2 };
+
+			console.log("objs: " + contador++)
+		}).then(Spoiler.create(
+			spoilerHp1, spoilerHp2, spoilerTlos1, spoilerTlos2, 
+			function(error, spoiler1, spoiler2, spoiler3, spoiler4) {
+
+				console.log("spoiler: " + contador++)
+				if(error) console.log("Errors for spoilers: " + error);
+		}));
+
+		
+	},
+
 	"Cleaning up database...": function(test) {
 		Spoiler.remove({}, function(){});	
 		Media.remove({}, function(){});
