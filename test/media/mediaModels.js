@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var test = require('nodeunit');
 var Media = require('../../app/models/media');
+var Spoiler = require('../../app/models/spoiler');
 
 var db;
 
@@ -28,42 +29,6 @@ module.exports = {
 			test.done();
 		}));
 	},
-
-	"Should insert media with one spoiler": function(test) {
-
-		var media = new Media({
-			title: 'Red Dragon'
-		});
-
-		media.spoilers.push("Graham kills Mr. D");
-
-		media.save(function(error, media) {
-			if(error) console.log(error);
-
-			test.equal(media.spoilers[0], "Graham kills Mr. D");
-
-			test.done()
-		});
-	},
-
-	"Śhould insert media with multiple spoilers": function(test) {
-
-		var media = new Media({
-			title: 'The Dark Tower'
-		});
-
-		media.spoilers.push("Henry Dean dies");
-		media.spoilers.push("Jake Chambers sacrifices himself to save Stephen King");
-
-		media.save(function(error, media) {
-			if(error) console.log(error);
-
-			test.equal(media.spoilers[0], "Henry Dean dies");
-			test.equal(media.spoilers[1], "Jake Chambers sacrifices himself to save Stephen King");
-
-			test.done();
-		});
-	}, 
 
 	"Cleaning up database...": function(test) {
 		Media.remove({}, function(){});	
