@@ -6,7 +6,7 @@ var ObjectId = Schema.Types.ObjectId;
 
 var spoilerSchema = new Schema({
 	text: { type: String, required: true },
-	media_id: { type: ObjectId, required: true }
+	media: { type: ObjectId, required: true }
 });
 
 module.exports = exports = mongoose.model('Spoiler', spoilerSchema);
