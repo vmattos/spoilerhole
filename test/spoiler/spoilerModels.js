@@ -58,8 +58,6 @@ module.exports = {
 			text: 'Everybody else dies'
 		};
 
-		var save2 = Spoiler.create(spoiler2);
-
 		Spoiler.create(spoiler1, spoiler2, function(error, spoiler1, spoiler2) {
 			if(error) console.log(error);
 
@@ -67,41 +65,23 @@ module.exports = {
 			test.equals(spoiler2.media, media._id);
 
 			test.done()
-		});
+		}).then(media.save());
 	},
 
-	"Should query multipĺe spoilers for multiple medias": function(test) {
-		var media1 = { title: 'Harry Potter' };
-		var media2 = { title: 'The Last of Us' };
+	"Should query multipĺe spoilers media": function(test) {
+		Media.findOne({ title: 'Game of Thrones' }, function(error, media) {
+			if(error) console.log(error);
+		}).exec(function(error, media){
 
-		var spoilerHp1,
-			spoilerHp2,
-			spoilerTlos1,
-			spoilerTlos2;
+			Spoiler.find({ media: media._id }, function(error, spoilers) {
+				if(error) console.log(error);
 
-		var contador = 0; 
+				test.equals(spoilers[0].text, 'Ned Stark dies');
+				test.equals(spoilers[1].text, 'Everybody else dies');
 
-		Media.create(media1, media2, function(error, media1, media2) {
-			if(error) console.log("Errors for medias: " + error);
-
-			console.log(media1)
-			console.log("media: " + contador++)
-		}).then(function(){
-			spoilerHp1 = { text: 'Dumbledore dies', media: media1 };
-			spoilerHp2 = { text: 'Sanpe dies', media: media1 };
-
-			spoilerTlos1 = { text: 'Ellie survives', media: media2 };
-			spoilerTlos2 = { text: 'No cure was found', media: media2 };
-
-			console.log("objs: " + contador++)
-		}).then(Spoiler.create(
-			spoilerHp1, spoilerHp2, spoilerTlos1, spoilerTlos2, 
-			function(error, spoiler1, spoiler2, spoiler3, spoiler4) {
-
-				console.log("spoiler: " + contador++)
-				if(error) console.log("Errors for spoilers: " + error);
-		}));
-
+				test.done();
+			});
+		});
 		
 	},
 
