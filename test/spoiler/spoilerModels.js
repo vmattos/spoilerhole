@@ -45,6 +45,31 @@ module.exports = {
 		});
 	},
 
+	"Should insert multiple spoilers in a single media": function(test) {
+		var media = new Media({ title: 'Game of Thrones' });
+
+		var spoiler1 = {
+			media: media,
+			text: 'Ned Stark dies'
+		};
+
+		var spoiler2 = {
+			media: media,
+			text: 'Everybody else dies'
+		};
+
+		var save2 = Spoiler.create(spoiler2);
+
+		Spoiler.create(spoiler1, spoiler2, function(error, spoiler1, spoiler2) {
+			if(error) console.log(error);
+
+			test.equals(spoiler1.media, media._id);
+			test.equals(spoiler2.media, media._id);
+
+			test.done()
+		});
+	},
+
 	"Cleaning up database...": function(test) {
 		Spoiler.remove({}, function(){});	
 		Media.remove({}, function(){});
