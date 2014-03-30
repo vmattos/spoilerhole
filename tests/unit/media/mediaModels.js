@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var test = require('nodeunit');
-var Media = require('../../app/models/media');
-var Spoiler = require('../../app/models/spoiler');
+var Media = require('../../../app/models/media');
+var Spoiler = require('../../../app/models/spoiler');
 
 var db;
 
