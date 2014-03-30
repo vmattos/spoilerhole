@@ -1,6 +1,7 @@
 'use strict';
 
 var Media = require('../models/media');
+var Spoiler = require('../models/spoiler');
 
 var spoilers = {};
 
@@ -21,17 +22,13 @@ spoilers.new = function(req, res, next){
 spoilers.create = function(req, res, next) {
 
 	var mediaId = req.params.id;
-	var spoiler = req.body.spoiler;
+	var spoiler = new Spoiler(req.body.spoiler);
 
-	Media.findOne({ _id: mediaId }, function(error, media) {
+	spoiler.media = mediaId;
+
+	spoiler.save(function(error, spoiler) {
 		if(error) next(error);
 
-		media.spoilers.push(spoiler.text);
-
-		media.save(function(error) {
-			if(error) next(error);
-
-			res.redirect('/media/' + mediaId);
-		}); 
+		res.redirect('/media/' + mediaId);
 	});
 };

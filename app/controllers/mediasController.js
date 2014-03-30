@@ -1,6 +1,7 @@
 'use strict';
 
 var Media = require('../models/media');
+var Spoiler = require('../models/spoiler');
 var medias = {};
 
 module.exports = exports = medias;
@@ -31,14 +32,20 @@ medias.create = function(req, res, next) {
 };
 
 medias.get = function(req, res, next) {
-	var id = req.params.id;
+	var id = req.params.id; 
 
-	Media.findOne({ _id: id }, function(error, media) {
-		if(error) next(error);
+	var query = Media.findOne({ _id: id }).exec();
+		
+	query.then(function(media) {
+		
+		Spoiler.find({ media: media._id }, function(error, spoilers) {
+			if(error) next(error);
 
-		res.render('medias/mediaView', {
-			media: media,
-			title: media.title + '\'s Spoilers'
+			res.render('medias/mediaView', {
+				media: media,
+				title: media.title + '\'s Spoilers',
+				spoilers: spoilers
+			});
 		});
 	});
 };
