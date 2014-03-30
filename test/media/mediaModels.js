@@ -31,8 +31,8 @@ module.exports = {
 	},
 
 	"Cleaning up database...": function(test) {
-		Media.remove({}, function(){});	
-		db.disconnect();
+		Media.remove({}, function(){})
+			.exec(db.disconnect());
 		test.done();
 	}
 };
