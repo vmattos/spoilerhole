@@ -86,9 +86,9 @@ module.exports = {
 	},
 
 	"Cleaning up database...": function(test) {
-		Spoiler.remove({}, function(){});	
-		Media.remove({}, function(){});
-		db.disconnect();
+		Spoiler.remove({}, function(){})
+			.exec(Media.remove({}, function(){}))
+			.then(db.disconnect());
 		test.done();
 	}
 };
