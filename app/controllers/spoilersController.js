@@ -26,7 +26,7 @@ spoilers.create = function(req, res, next) {
 
 	spoiler.media = mediaId;
 
-	spoiler.save(function(error, spoiler) {
+	spoiler.save(function(error) {
 		if(error) next(error);
 
 		res.redirect('/media/' + mediaId);
