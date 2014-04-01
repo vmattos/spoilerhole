@@ -9,7 +9,7 @@
     <% if(spoilers.length > 0) { %>
       <ul>
         <% for(var i=0; i < spoilers.length; i++) { %>
-          <li><%= spoilers[i].text %> - <a href="<%= media._id %>/spoiler/remove">Remover</a></li>
+          <li><%= spoilers[i].text %> - <a href="spolers/<%= spoilers[i]._id %>/remove">Remover</a></li>
         <% } %>
       </ul>
     <% } else { %>
