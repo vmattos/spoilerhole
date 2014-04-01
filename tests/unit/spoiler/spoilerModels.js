@@ -85,6 +85,20 @@ module.exports = {
 		
 	},
 
+	"Should delete a spoiler given it's id": function(test) {
+		Spoiler.findOne({ text: 'Ned Stark dies' }, function(error, spoiler) {
+			if(error) console.log(error);
+		}).exec(function(error, spoiler){
+			
+			Spoiler.remove({ _id: spoiler._id }, function(error) {
+				if(error) console.log(error);
+
+				test.done();
+			});
+
+		});
+	},
+
 	"Cleaning up database...": function(test) {
 		Spoiler.remove({}, function(){})
 			.exec(Media.remove({}, function(){}))
