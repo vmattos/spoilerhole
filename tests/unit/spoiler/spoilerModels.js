@@ -89,15 +89,25 @@ module.exports = {
 		Spoiler.findOne({ text: 'Ned Stark dies' }, function(error, spoiler) {
 			if(error) console.log(error);
 		}).exec(function(error, spoiler){
-			
+			var media = spoiler.media;
+
 			Spoiler.remove({ _id: spoiler._id }, function(error) {
 				if(error) console.log(error);
 
-				test.done();
+			}).exec(function() {
+				Spoiler.find({ media: media }, function(error, spoilers) {
+					if(error) console.log(error);
+
+					test.equals(spoilers.length, 1);
+
+					test.done();
+				});
 			});
 
 		});
 	},
+
+	
 
 	"Cleaning up database...": function(test) {
 		Spoiler.remove({}, function(){})
