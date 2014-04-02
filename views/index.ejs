@@ -4,16 +4,24 @@
     <title><%= title %></title>
   </head>
   <body>
-  	<% if(medias) { %>
-		<ul>
-			<% for(var i=0; i < medias.length; i++) { %>
-				<li>
-          <a href="/media/<%= medias[i]._id %>">
-            <%= medias[i].title %>
-          </a>
-        </li>
-			<% } %>
-		</ul>
-  	<% } %>
+    <header>
+      <a href="/media">New media</a>
+    </header>
+
+
+    <main>
+    	<% if(medias) { %>
+        <h3>Medias</h3>
+    		<ul>
+    			<% for(var i=0; i < medias.length; i++) { %>
+    				<li>
+              <a href="/media/<%= medias[i]._id %>">
+                <%= medias[i].title %>
+              </a>
+            </li>
+    			<% } %>
+    		</ul>
+    	<% } %>
+    </main> 
   </body>
 </html>
