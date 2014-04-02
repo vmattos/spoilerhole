@@ -32,3 +32,21 @@ spoilers.create = function(req, res, next) {
 		res.redirect('/media/' + mediaId);
 	});
 };
+
+spoilers.remove = function(req, res, next) {
+
+	var spoilerId = req.params.id;
+	var mediaId;
+
+	Spoiler.findOne({ _id: spoilerId }, function(error, spoiler) {
+		if(error) next(error);
+
+		mediaId = spoiler.media;
+	}).exec(function(error, spoiler) {
+		spoiler.remove(function(error) {
+			if(error) next(error);
+
+			res.redirect('/media/' + mediaId);
+		});
+	});
+};
