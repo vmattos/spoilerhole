@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-  </head>
-  <body>
-	<% include ../header %>
 
-  	<form method="POST" action="media">
-  		Title: <input type="text" name="media[title]" />
-  		<input type="submit" value="Save"/>
-  	</form>
-  </body>
-</html>
+<% include ../layouts/header %>
+
+<form method="POST" action="media">
+	Title: <input type="text" name="media[title]" />
+	<input type="submit" value="Save"/>
+</form>
+ 
+<% include ../layouts/footer %>

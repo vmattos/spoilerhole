@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>New spoiler for <%= media.title %></title>
-  </head>
-  <body>
-	<% include ../header %>
 
-  	<form method="POST" action="spoiler">
-  		Spoiler: <textarea name="spoiler[text]"></textarea>
-  		<input type="submit" value="Save"/>
-  	</form>
-  </body>
-</html>
+<% include ../layouts/header %>
+
+<form method="POST" action="spoiler">
+	Spoiler: <textarea name="spoiler[text]"></textarea>
+	<input type="submit" value="Save"/>
+</form>
+
+<% include ../layouts/footer %>
