@@ -24,9 +24,9 @@ app.configure(function() {
 	app.use(express.methodOverride());
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
-
+	
 	var mongoUri = process.env.MONGOLAB_URI ||
- 		process.env.MONGOHQ_URL ||
+		process.env.MONGOHQ_URL ||
 			configDB.url;
 
 	// development only
