@@ -35,6 +35,13 @@ app.configure(function() {
 	if('test' === app.get('env')) {
 		mongoose.connect(configDB.test);
 	}
+
+	if('production' === app.get('env')) {
+		var mongoUri = process.env.MONGOLAB_URI ||
+ 			process.env.MONGOHQ_URL ||
+				'mongodb://localhost/mydb';
+		mongoose.connect(mongoUri);
+	}
 });
 
 require('./config/routes')(app);
