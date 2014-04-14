@@ -14,6 +14,7 @@ module.exports = exports = function(page) {
 
 				res.render('spoilers/new', {
 					page: page,
+					title: 'New spoiler',
 					media: media
 				});
 			});
