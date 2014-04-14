@@ -4,6 +4,8 @@
     <title><%= title %></title>
   </head>
   <body>
+	<% include ../header %>
+
   	<form method="POST" action="media">
   		Title: <input type="text" name="media[title]" />
   		<input type="submit" value="Save"/>
