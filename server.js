@@ -25,20 +25,17 @@ app.configure(function() {
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
 
+	var mongoUri = process.env.MONGOLAB_URI ||
+ 		process.env.MONGOHQ_URL ||
+			configDB.url;
 
 	// development only
 	if ('development' === app.get('env')) {
 		app.use(express.errorHandler());
-		mongoose.connect(configDB.url);
+		mongoose.connect(mongoUri);
 	}
 
-	if('test' === app.get('env')) {
-		mongoose.connect(configDB.test);
-	}
-
-	var mongoUri = process.env.MONGOLAB_URI ||
- 		process.env.MONGOHQ_URL ||
-			configDB.url;
+	
 });
 
 require('./config/routes')(app);
