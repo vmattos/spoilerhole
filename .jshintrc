@@ -4,7 +4,6 @@
 	"smarttabs": true,
 	"eqnull": true,
 	"browser": true,
-	"indent": 4,
 	"undef": true,
 	"unused": true,
 	"evil": true,
