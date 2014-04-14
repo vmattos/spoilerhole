@@ -24,7 +24,7 @@ module.exports = exports = function(page) {
 		create: function(req, res, next) {
 			var media = new Media(req.body.media);
 
-			media.save(function(error, media) {
+			media.save(function(error) {
 				if(error) next(error);
 
 				res.redirect('/');
