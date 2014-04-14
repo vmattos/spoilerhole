@@ -27,7 +27,7 @@ module.exports = exports = function(page) {
 			media.save(function(error, media) {
 				if(error) next(error);
 
-				res.send(media);
+				res.redirect('/');
 			});
 		},
 
