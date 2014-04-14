@@ -2,9 +2,19 @@
 
 <% include ../layouts/header %>
 
-<form method="POST" action="media">
-	Title: <input type="text" name="media[title]" />
-	<input type="submit" value="Save"/>
+<form method="POST" action="media" class="form-horizontal container" role="form">
+	<div class="form-group">
+		<label for="media-title" class="col-sm-2  control-label">
+			Title:
+		</label>
+		<div class="col-sm-10 col-md-6">
+			<input type="text" name="media[title]" id="media-title" class="form-control" 
+				placeholder="e.g. A Fistful of Dollars"/>
+		</div>
+		<div class="col-sm-offset-2 col-sm-10">
+		<input type="submit" value="Save" class="btn btn-primary" />
+		</div>
+	</div>
 </form>
  
 <% include ../layouts/footer %>
