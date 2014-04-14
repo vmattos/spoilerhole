@@ -10,7 +10,6 @@ module.exports = exports = function(page) {
 			Media.find({}, function(error, medias) {
 				res.render('index', {
 					page: page,
-					title: 'Spoilerhole',
 					medias: medias
 				});
 			});
@@ -18,8 +17,7 @@ module.exports = exports = function(page) {
 
 		new: function(req, res) {
 			res.render('medias/new', {
-				page: page,
-				title: 'New media'
+				page: page
 			});
 		},
 
@@ -46,7 +44,6 @@ module.exports = exports = function(page) {
 					res.render('medias/mediaView', {
 						page: page,
 						media: media,
-						title: media.title + '\'s Spoilers',
 						spoilers: spoilers
 					});
 				});
