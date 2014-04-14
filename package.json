@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "server.js",
   "scripts": {
+    "postinstall": "npm install -g bower; bower install"
     "start": "nodemon server.js",
     "test": "node tests/unit/test-runner.js; ./node_modules/grunt-cli/bin/grunt test"
   },
