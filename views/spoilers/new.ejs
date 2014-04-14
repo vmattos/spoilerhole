@@ -2,9 +2,14 @@
 
 <% include ../layouts/header %>
 
-<form method="POST" action="spoiler">
-	Spoiler: <textarea name="spoiler[text]"></textarea>
-	<input type="submit" value="Save"/>
+<form method="POST" action="spoiler" class="container">
+	<label for="spoiler-text">
+		Spoiler: 
+	</label>
+	<textarea name="spoiler[text]" id="spoiler-text" class="form-control" rows="5"></textarea>
+	<div>
+		<input type="submit" value="Save" class="btn btn-primary"/>
+	</div>
 </form>
 
 <% include ../layouts/footer %>

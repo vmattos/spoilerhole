@@ -3,7 +3,7 @@
 
 <% include ../layouts/header %>
 
-<main>
+<main class="container">
 	<h1><%= media.title %>:</h1>
 
   <section id="spoiler-list">
@@ -14,7 +14,7 @@
           <li>
             <form action="/spoiler/<%= spoilers[i]._id %>" method="POST">
               <input type="hidden" name="_method" value="delete" />
-              <%= spoilers[i].text %> - <input type="submit" value="Remove"/>
+              <%= spoilers[i].text %> - <input type="submit" value="Remove" class="btn btn-danger btn-xs"/>
             </form>
           </li>
         <% } %>
