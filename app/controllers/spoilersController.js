@@ -3,50 +3,51 @@
 var Media = require('../models/media');
 var Spoiler = require('../models/spoiler');
 
-var spoilers = {};
+module.exports = exports = function(page) {
 
-module.exports = exports = spoilers;
+	return {
+		new: function(req, res, next){
+			var mediaId = req.params.id;
 
-spoilers.new = function(req, res, next){
-	var mediaId = req.params.id;
+			Media.findOne({ _id: mediaId }, function(error, media) {
+				if(error) next(error);
 
-	Media.findOne({ _id: mediaId }, function(error, media) {
-		if(error) next(error);
+				res.render('spoilers/new', {
+					media: media
+				});
+			});
+		},
 
-		res.render('spoilers/new', {
-			media: media
-		});
-	});
-};
+		create: function(req, res, next) {
 
-spoilers.create = function(req, res, next) {
+			var mediaId = req.params.id;
+			var spoiler = new Spoiler(req.body.spoiler);
 
-	var mediaId = req.params.id;
-	var spoiler = new Spoiler(req.body.spoiler);
+			spoiler.media = mediaId;
 
-	spoiler.media = mediaId;
+			spoiler.save(function(error) {
+				if(error) next(error);
 
-	spoiler.save(function(error) {
-		if(error) next(error);
+				res.redirect('/media/' + mediaId);
+			});
+		},
 
-		res.redirect('/media/' + mediaId);
-	});
-};
+		remove: function(req, res, next) {
 
-spoilers.remove = function(req, res, next) {
+			var spoilerId = req.params.id;
+			var mediaId;
 
-	var spoilerId = req.params.id;
-	var mediaId;
+			Spoiler.findOne({ _id: spoilerId }, function(error, spoiler) {
+				if(error) next(error);
 
-	Spoiler.findOne({ _id: spoilerId }, function(error, spoiler) {
-		if(error) next(error);
+				mediaId = spoiler.media;
+			}).exec(function(error, spoiler) {
+				spoiler.remove(function(error) {
+					if(error) next(error);
 
-		mediaId = spoiler.media;
-	}).exec(function(error, spoiler) {
-		spoiler.remove(function(error) {
-			if(error) next(error);
-
-			res.redirect('/media/' + mediaId);
-		});
-	});
-};
+					res.redirect('/media/' + mediaId);
+				});
+			});
+		}
+	}
+}

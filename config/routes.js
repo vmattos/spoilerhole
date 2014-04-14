@@ -1,8 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-	var medias = require('../app/controllers/mediasController');
-	var spoilers = require('../app/controllers/spoilersController');
+	var page = require('../app/models/page');
+	var medias = require('../app/controllers/mediasController')(page);
+	var spoilers = require('../app/controllers/spoilersController')(page);
 
 	// medias routes
 	app.get('/', medias.index);
