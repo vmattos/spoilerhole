@@ -13,6 +13,7 @@ module.exports = exports = function(page) {
 				if(error) next(error);
 
 				res.render('spoilers/new', {
+					page: page,
 					media: media
 				});
 			});
@@ -49,5 +50,5 @@ module.exports = exports = function(page) {
 				});
 			});
 		}
-	}
-}
+	};
+};
