@@ -36,6 +36,8 @@
     "request": "~2.34.0",
     "grunt-jscs-checker": "~0.4.1",
     "grunt-cli": "~0.1.13",
-    "tobi": "~0.3.2"
+    "chai": "~1.9.1",
+    "zombie": "~2.0.0-alpha31",
+    "mocha": "~1.18.2"
   }
 }
