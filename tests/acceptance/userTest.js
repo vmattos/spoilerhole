@@ -28,5 +28,17 @@ describe("User", function() {
 	    		});
     });
 
+    it("should be able to delete medias", function() {
+    	return browser.clickLink("Harry Potter")
+    			.then(function() {
+    				return browser
+    						.pressButton("Delete media")
+    			})
+    			.then(function() {
+    				var html = browser.html();
+    				chai.expect(html).to.not.contain('Harry Potter');
+    			});
+    });
+
 
 });
