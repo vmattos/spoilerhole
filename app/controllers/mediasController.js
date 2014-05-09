@@ -48,6 +48,17 @@ module.exports = exports = function(page) {
 					});
 				});
 			});
+		},
+
+		remove: function(req, res, next) {
+
+			var mediaId = req.params.id;
+
+			Media.findOneAndRemove({ _id: mediaId }, function(error) {
+				if(error) next(error);
+
+				res.redirect('/');
+			});
 		}
 	};
 };

@@ -10,6 +10,7 @@ module.exports = function(app) {
 	app.get('/media', medias.new); 
 	app.post('/media', medias.create);
 	app.get('/media/:id', medias.get);
+	app.delete('/media/:id', medias.remove);
 
 	// spoilers routes
 	app.get('/media/:id/spoiler', spoilers.new);
